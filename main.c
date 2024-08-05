@@ -177,6 +177,7 @@ void setPattern(uint8_t bitpattern) {
 void pattern1(void) {
     uint8_t bitpattern = 0b11101001;
     setPattern(bitpattern);
+    //pattern1
 }
 
 void pattern2(void) {
