@@ -124,7 +124,7 @@ int main(void)
           HAL_Delay(50); // Simple debounce delay
           if (HAL_GPIO_ReadPin(Button3_GPIO_Port, GPIO_PIN_0) == GPIO_PIN_RESET)
           {
-              // SW0 is pressed
+              // SW0 is press
               timer_period = 500; // Set delay to 0.5 seconds
               __HAL_TIM_SET_AUTORELOAD(&htim16, timer_period - 1);
           }
