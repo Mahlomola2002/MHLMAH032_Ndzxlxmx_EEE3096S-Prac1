@@ -166,67 +166,6 @@ int main(void)
   }
   /* USER CODE END 3 */
 }
-void setPattern(uint8_t bitpattern)
-{
-  for (int i = 0; i < 8; i++)
-  {
-    GPIO_PinState pinState = (bitpattern & (1 << i)) ? GPIO_PIN_SET : GPIO_PIN_RESET;
-    HAL_GPIO_WritePin(LED0_GPIO_Port, GPIO_PIN_0 << i, pinState);
-  }
-}
-
-void pattern1(void)
-{
-  uint8_t bitpattern = 0b11101001;
-  setPattern(bitpattern);
-  // pattern1
-}
-
-void pattern2(void)
-{
-  uint8_t bitpattern = 0b11010010;
-  setPattern(bitpattern);
-}
-
-void pattern3(void)
-{
-  uint8_t bitpattern = 0b10100100;
-  setPattern(bitpattern);
-}
-
-void pattern4(void)
-{
-  uint8_t bitpattern = 0b01001000;
-  setPattern(bitpattern);
-}
-
-void pattern5(void)
-{
-  uint8_t bitpattern = 0b10010000;
-  setPattern(bitpattern);
-}
-
-void pattern6(void)
-{
-  uint8_t bitpattern = 0b00100000;
-  setPattern(bitpattern);
-}
-
-void pattern7(void)
-{
-  uint8_t bitpattern = 0b01000000;
-  setPattern(bitpattern);
-}
-void pattern8(void)
-{
-  uint8_t bitpattern = 0b1000000;
-  setPattern(bitpattern);
-}
-void pattern9(void)
-{
-  uint8_t bitpattern = 0b00000000;
-  setPattern(bitpattern);
-}
 
 /**
  * @brief System Clock Configuration
@@ -432,6 +371,67 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void setPattern(uint8_t bitpattern)
+{
+  for (int i = 0; i < 8; i++)
+  {
+    GPIO_PinState pinState = (bitpattern & (1 << i)) ? GPIO_PIN_SET : GPIO_PIN_RESET;
+    HAL_GPIO_WritePin(LED0_GPIO_Port, GPIO_PIN_0 << i, pinState);
+  }
+}
+
+void pattern1(void)
+{
+  uint8_t bitpattern = 0b11101001;
+  setPattern(bitpattern);
+  // pattern1
+}
+
+void pattern2(void)
+{
+  uint8_t bitpattern = 0b11010010;
+  setPattern(bitpattern);
+}
+
+void pattern3(void)
+{
+  uint8_t bitpattern = 0b10100100;
+  setPattern(bitpattern);
+}
+
+void pattern4(void)
+{
+  uint8_t bitpattern = 0b01001000;
+  setPattern(bitpattern);
+}
+
+void pattern5(void)
+{
+  uint8_t bitpattern = 0b10010000;
+  setPattern(bitpattern);
+}
+
+void pattern6(void)
+{
+  uint8_t bitpattern = 0b00100000;
+  setPattern(bitpattern);
+}
+
+void pattern7(void)
+{
+  uint8_t bitpattern = 0b01000000;
+  setPattern(bitpattern);
+}
+void pattern8(void)
+{
+  uint8_t bitpattern = 0b10000000;
+  setPattern(bitpattern);
+}
+void pattern9(void)
+{
+  uint8_t bitpattern = 0b00000000;
+  setPattern(bitpattern);
+}
 
 // Timer rolled over
 void TIM16_IRQHandler(void)
@@ -448,6 +448,7 @@ void TIM16_IRQHandler(void)
   // Call the current pattern function
   patterns[current_pattern]();
 
+  // Move to next pattern
   // Move to next pattern
   current_pattern = (current_pattern + 1) % 9;
 }
